@@ -1,0 +1,220 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+}
+
+.container {
+  min-height: 100vh;
+  width: 100%;
+  transition: all 100ms;
+}
+
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.font-md {
+  font-size: 1.5em;
+}
+
+.input-group {
+  position: relative;
+  border: 1px solid rgb(196, 196, 196);
+  border-radius: 5px;
+  width: 100%;
+  display: flex;
+  transition: all 100ms ease-in;
+}
+
+.url-input {
+  --width: min(100%, 550px + 1vw); 
+  width: var(--width);
+  padding: 0 1em;
+  position: relative;
+  transition: all 100ms ease;
+}
+
+.input-group > span {
+  position: absolute;
+  top: 50%;
+  left: 1em;
+  font-size: .8em;
+  transform: translateY(-50%);
+  transition: all 200ms ease-out;
+  background-color: #fff;
+  padding: .3em;
+  pointer-events: none;
+}
+
+.input-group > input {
+  width: 100%;
+  padding: 1em .2em .5em .7em;
+  outline: none;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 5px;
+  color: rgb(52, 52, 52);
+}
+
+.input-group:focus-within {
+  border-color:rgb(75, 75, 75);
+}
+
+.input-group > input:focus ~ span,
+.input-group > input:valid ~ span {
+  top: -50%;
+  left: 1em;
+  transform: translateY(calc(50% - .5em));
+  border-radius: 5px;
+  font-size: .6em;
+  color:rgb(29, 129, 211);
+}
+
+.input-group > span .feather {
+  width: 1.3em;
+  vertical-align: middle;
+  margin-right: 5px;
+  color: rgb(29, 129, 211);
+}
+
+.input-group input::-moz-selection,
+.input-group input::selection {
+  background-color: rgb(29, 129, 211);
+  color: #fff;
+}
+
+.url-input.disabled input {
+  pointer-events: none;
+  color: rgb(115, 115, 115);
+}
+
+.url-input button {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding-right: 1em;
+  color: rgb(29, 129, 211);
+  transition: all 50ms ease-in;
+}
+
+.url-input button:active {
+  color:rgb(65, 74, 81);
+}
+
+.url-input input:invalid ~ button,
+.url-input button:disabled {
+  pointer-events: none;
+  color:rgb(120, 120, 120);
+}
+
+.url-input button.loader > .feather {
+  animation: rotate 2s infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateZ(0);
+  }
+
+  50% {
+    transform: rotateZ(180deg);
+  }
+
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+.url-input .error {
+  position: absolute;
+  top: calc(100% + 5px);
+  font-size: .75em;
+  color: rgb(219, 80, 21);
+  overflow: hidden;
+  transition: all 100ms;
+  transform-origin: left center;
+  transform: translateY(0);
+  opacity: 1;
+  z-index: -1;
+}
+
+.url-input .error.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.url-input .error .feather {
+  width: 1.3em;
+  vertical-align: middle;
+}
+
+.shortened_url {
+  margin-top: 10px;
+  width: min(100%, calc(550px + 1vw - 2em));
+  padding: .5em;
+  /* height: 5ch; */
+  background-color: rgb(29, 129, 211);
+  border-radius: 5px;
+  display: none;
+  transition: all 100ms;
+  opacity: 0;
+  transform-origin: top;
+  
+  align-items: center;
+  justify-content: space-between;
+}
+
+.shortened_url button {
+  color: #fff;
+  padding-right: .2em;
+}
+
+.shortened_url button .feather {
+  width: 1.1em;
+}
+
+.shortened_url span {
+  flex: 1;
+}
+
+.shortened_url span .feather {
+  width: 1em;
+  vertical-align: middle;
+  margin-right: 5px;
+  color: #fff;
+}
+
+.shortened_url span a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.shortened_url span a:hover {
+  text-decoration: underline;
+}
+
+.shortened_url.appear {
+  display: flex;
+  animation: anim 100ms forwards;
+}
+
+@keyframes anim {
+  from {
+    opacity: 0;
+  }
+  
+  to {
+    opacity: 1;
+  }
+}

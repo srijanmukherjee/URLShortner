@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container centered">
+  <div class="url-input">
+    <div class="input-group">
+      <input type="text" required id="url" value="https://www.google.com" />
+      <span><i data-feather="link"></i>Enter long URL to make a tiny URL</span>
+      <button id="create_btn">create</button>
+    </div>
+    <div class="shortened_url">
+      <span><i data-feather="link"></i><a href="" target="_blank"></a></span>
+      {# <button><i data-feather="copy"></i></button> #}
+    </div>
+    <span class="error hidden" id="error">
+      <i data-feather="x-circle"></i>
+      please enter a valid URL
+    </span>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+{% endblock %}
