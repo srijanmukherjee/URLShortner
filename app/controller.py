@@ -5,15 +5,20 @@ import pymongo
 
 from . import db
 
+cache = {}
 
 # TODO: add funciton decorater to get client
 def get_url(urlid: str) -> Optional[dict]:
+    if urlid in cache:
+        return {"url": cache[urlid]}
+
     db_name = current_app.config["DB_NAME"]
     collection_name = current_app.config["COLLECTION_NAME"]
 
     client: pymongo.MongoClient = db.get_db_client()
     collection = client[db_name][collection_name]
     url = collection.find_one({"urlid": urlid})
+    cache[urlid] = url["url"]
     return url
 
 

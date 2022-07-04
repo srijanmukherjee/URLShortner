@@ -2,6 +2,7 @@ from flask import (
     Blueprint,
     Response,
     abort,
+    current_app,
     jsonify,
     redirect,
     render_template,
@@ -48,7 +49,7 @@ def generate():
     else:
         urlid = url["urlid"]
 
-    return jsonify(url=urlid)
+    return jsonify(url=f'{current_app.config["HOST"]}/{urlid}')
 
 
 @bp.route("/<urlid>")

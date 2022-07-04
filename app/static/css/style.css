@@ -163,16 +163,31 @@ body {
   margin-top: 10px;
   width: min(100%, calc(550px + 1vw - 2em));
   padding: .5em;
-  /* height: 5ch; */
   background-color: rgb(29, 129, 211);
   border-radius: 5px;
   display: none;
   transition: all 100ms;
   opacity: 0;
   transform-origin: top;
-  
   align-items: center;
   justify-content: space-between;
+}
+
+.shortened_url.shortened_url_error {
+  background-color: rgb(239, 72, 72);
+  color: #fff;
+}
+
+.shortened_url #shortened_url_error {
+  display: none;
+}
+
+.shortened_url.shortened_url_error #shortened_url_error {
+  display: block;
+}
+
+.shortened_url.shortened_url_error .url {
+  display: none;
 }
 
 .shortened_url button {

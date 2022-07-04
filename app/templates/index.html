@@ -3,13 +3,18 @@
 <div class="container centered">
   <div class="url-input">
     <div class="input-group">
-      <input type="text" required id="url" value="https://www.google.com" />
+      <input type="text" required id="url" value="" />
       <span><i data-feather="link"></i>Enter long URL to make a tiny URL</span>
       <button id="create_btn">create</button>
     </div>
     <div class="shortened_url">
-      <span><i data-feather="link"></i><a href="" target="_blank"></a></span>
-      {# <button><i data-feather="copy"></i></button> #}
+      <span id="shortened_url_error"
+        ><i data-feather="alert-circle"></i>
+        <span class="text">Something went wrong</span></span
+      >
+      <span class="url"
+        ><i data-feather="link"></i><a href="" target="_blank"></a
+      ></span>
     </div>
     <span class="error hidden" id="error">
       <i data-feather="x-circle"></i>
